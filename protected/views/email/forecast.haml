@@ -1,0 +1,9 @@
+%div{:style => 'margin: 50px auto; background: #f7f7f7; width: 500px; padding: 20px; color: #665;'}
+  %h1= "Прогноз от Winfor.me на " . date('d.m.Y', strtotime($forecast->date))
+  %big{:style => "color: black;"}= $forecast->forecast
+  %br/
+  %big{:style=> "color: black;"}= "Коэффициент: ".$forecast->factor.
+  %br/
+  %div{:style => "color: #665;"}= "(" . $forecast->championship . ")"
+  %br/
+  %div=$forecast->description

@@ -1,0 +1,28 @@
+AddDefaultCharset utf-8
+
+#AuthType Basic
+#AuthName "My Protected Area"
+#AuthUserFile /var/www/.htpasswd
+#Require valid-user
+
+Order deny,allow
+Allow from all
+
+
+<IfModule mod_rewrite.c>
+  Options +FollowSymLinks
+  IndexIgnore */*
+  RewriteEngine on
+
+  RewriteCond %{HTTP_HOST}  ^www\.(.*)  [NC]
+  RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+    
+  # If a directory or a file exists, use it directly.
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  
+  # Otherwise forward it to index.php.
+  RewriteRule . /
+</IfModule>
+
+ErrorDocument 404 http://medicalvitadiet.com.au/404

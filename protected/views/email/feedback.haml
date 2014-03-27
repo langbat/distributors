@@ -1,0 +1,15 @@
+%div{:style => 'margin: 50px auto; background: #f7f7f7; width: 500px; padding: 20px; color: #665;'}
+  %h1= "Winfor.me: обращение через форму обратной связи"
+  %table
+    %tr
+      %td= "Дата"
+      %td= date('d-m-Y H:i', time())
+    %tr
+      %td= "Email"
+      %td= $form->email
+    %tr
+      %td= "Тема обращения"
+      %td= $form->subject
+    %tr
+      %td= "Сообщение"
+      %td= $form->body
